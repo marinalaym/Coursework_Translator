@@ -261,13 +261,8 @@ namespace Translator
             while(current < tokens.Count - 1)
             {
                 if (tokens[current].Type == Token.TokenType.IDENTIFIER ||
-                    tokens[current].Type == Token.TokenType.LITERAL)
-                {
-                    if (tokens[next].Type == Token.TokenType.LPAR)
-                        throw new AnaliseException($"Ошибка в арифметическом выражении. Ожидалось: или +, или -, или *, или /, а встретилось: {tokens[next].Value}");
-                    else {current++; next++; }
-                }
-                else if (tokens[current].Type == Token.TokenType.RPAR)
+                    tokens[current].Type == Token.TokenType.LITERAL ||
+                    tokens[current].Type == Token.TokenType.RPAR)
                 {
                     if (tokens[next].Type == Token.TokenType.IDENTIFIER ||
                        tokens[next].Type == Token.TokenType.LITERAL ||
